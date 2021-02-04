@@ -35,6 +35,7 @@ La vista se encarga de la interacción con el usuario
 Presenta el menu de opciones  y  por cada seleccion
 se hace la solicitud al controlador para ejecutar la
 operación solicitada
+ES COMO LA CONSOLA Y LE LLEGA LA INFO DE CONTROLLER.PY
 """
 
 
@@ -42,7 +43,7 @@ def printMenu():
     print("Opciones:")
     print("1- Cargar Libros")
     print("2- Cargar Tags")
-    # TO-DO: Modificaciones para completar el laboratorio 1.
+    print("3- Cargar booktags")    
     print("0- Salir")
 
 
@@ -60,6 +61,13 @@ def loadTags():
     return controller.loadTags('GoodReads/tags.csv')
 
 
+def loadBookTags():
+    """
+    Carga los Tags
+    """
+    return controller.loadBooksTags('GoodReads/book_tags.csv')
+
+
 """
 Menu principal
 """
@@ -75,8 +83,11 @@ while True:
         print("Cargando información de tags....")
         tags = loadTags()
         print('Total de tags cargados: ' + str(lt.size(tags)))
-    # TO-DO: Modificaciones para completar el laboratorio 1.
 
+    elif int(inputs[0]) == 3:
+        print("Cargando información de booktags....")
+        booktags = loadBookTags()
+        print('Total de booktags cargados: ' + str(lt.size(booktags)))
     else:
         sys.exit(0)
 sys.exit(0)
